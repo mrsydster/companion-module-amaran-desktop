@@ -1,0 +1,26 @@
+{
+	"id": "amaran",
+	"name": "amaran",
+	"shortname": "amaran",
+	"description": "Companion module for Amaran lights",
+	"version": "1.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-amaran.git",
+	"bugs": "https://github.com/bitfocus/companion-module-amaran/issues",
+	"maintainers": [
+		{
+			"name": "Sydney Smit",
+			"email": "smit.sydney@gmail.com"
+		}
+	],
+	"legacyIds": [],
+	"runtime": {
+		"type": "node18",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../dist/index.js"
+	},
+	"manufacturer": "Amaran",
+	"products": ["Amaran"],
+	"keywords": ["amaran", "aputure", "companion"]
+}

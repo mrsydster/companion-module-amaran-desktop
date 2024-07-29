@@ -1,0 +1,52 @@
+{
+	"name": "amaran",
+	"version": "4.3.0",
+	"main": "/dist/index.js",
+	"license": "MIT",
+	"prettier": "@companion-module/tools/.prettierrc.json",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bitfocus/companion-module-amaran.git"
+	},
+	"scripts": {
+		"prepare": "husky install",
+		"dev": "yarn build:watch",
+		"build": "rimraf dist && yarn build:main",
+		"build:main": "tsc -p tsconfig.build.json",
+		"build:watch": "tsc -p tsconfig.build.json --watch",
+		"lint": "eslint ./src --ext .ts",
+		"lint:raw": "eslint --ext .ts --ext .js --ignore-pattern dist --ignore-pattern pkg",
+		"format": "prettier -w .",
+		"package": "yarn build && companion-module-build",
+		"postinstall": "yarn build"
+	},
+	"engines": {
+		"node": ">=18.16.0"
+	},
+	"dependencies": {
+		"@companion-module/base": "^1.7.0",
+		"ws": "^8.17.1"
+	},
+	"devDependencies": {
+		"@companion-module/tools": "^1.5.0",
+		"@types/node": "^18.16.0",
+		"@types/ws": "^8.5.4",
+		"@typescript-eslint/eslint-plugin": "^5.53.0",
+		"@typescript-eslint/parser": "^5.53.0",
+		"eslint": "^8.34.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"husky": "^7.0.4",
+		"lint-staged": "^13.1.2",
+		"prettier": "^2.8.8",
+		"rimraf": "^3.0.2",
+		"typescript": "~5.3.3"
+	},
+	"lint-staged": {
+		"*.{js,json,md}": [
+			"prettier --write"
+		],
+		"*.ts": [
+			"yarn lint --fix"
+		]
+	}
+}
