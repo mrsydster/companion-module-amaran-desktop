@@ -1,6 +1,6 @@
 {
 	"name": "amaran",
-	"version": "4.3.0",
+	"version": "1.0.0",
 	"main": "/dist/index.js",
 	"license": "MIT",
 	"prettier": "@companion-module/tools/.prettierrc.json",

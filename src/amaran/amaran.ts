@@ -9,6 +9,7 @@ import { AmaranInstance, AmaranClient } from '../index'
 
 import { connect, disconnectSocket } from './connection'
 import { CustomFields, AmaranEvent } from './amaran-types'
+
 import { stateobj } from './state'
 
 import { actions } from './actions/index'

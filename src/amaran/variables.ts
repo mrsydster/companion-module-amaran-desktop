@@ -1,20 +1,13 @@
-import { CompanionVariableDefinition } from '@companion-module/base'
+import { CompanionVariableDefinition } from "@companion-module/base";
 
-import { variableId } from '../enums'
+import { variableId } from '../enums';
 
 export function variables(): CompanionVariableDefinition[] {
-	const variables: CompanionVariableDefinition[] = [
-		//clock
+	return [
+		//connection with websocket
 		{
-			name: 'Clock (hh:mm:ss)',
-			variableId: variableId.Clock,
-		},
-		//timer.addedTime
-		{
-			name: 'User added time to current event (hh:mm:ss)',
-			variableId: variableId.TimerAdded,
+			name: 'Connected',
+			variableId: variableId.Connected,
 		},
 	]
-
-	return variables
 }

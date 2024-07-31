@@ -1,10 +1,9 @@
-# companion-module-amaran
+# companion-module-amaran-desktop
 
-This module is created for use with [amaran Desktop app](https://www.getontime.no/)
+This module is created for use with [amaran Desktop app](https://amarancreators.com/)
 
-- [Download ontime](https://www.getontime.no/)
-- [Read the docs](https://docs.getontime.no/)
-- [Follow on github](https://github.com/cpvalente/ontime)
+- [Download amaran Desktop](https://amarancreators.com/)
+- [Read the docs](https://help.aputure.com/en/amaran)
 
 ## Help
 

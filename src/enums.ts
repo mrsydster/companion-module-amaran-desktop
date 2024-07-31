@@ -1,95 +1,19 @@
-/**
- * maximum allowed time 23:59:59 as seconds
- */
-export const MAX_TIME_SECONDS = 23 * 60 * 60 + 59 * 60 + 59
-
 export enum ActionId {
-	Start = 'start',
+	Toggle = 'toggleSleep',
+
 	Load = 'load',
 	Pause = 'pause',
 	Stop = 'stop',
-	Reload = 'reload',
 	Roll = 'roll',
-
-	Add = 'add',
-
-	Change = 'change',
-
-	TimerBlackout = 'TimerBlackout',
-	TimerBlink = 'TimerBlink',
-	MessageVisibility = 'setMessageVisibility',
-	MessageText = 'setMessage',
-
-	AuxTimerDuration = 'auxTimerDuration',
-	AuxTimerPlayState = 'auxTimerPlayState',
-	AuxTimerDirection = 'auxTimerDirection',
 }
 
 export enum feedbackId {
+	Connected = 'connected',
+
 	ColorPlayback = 'colorPlayback',
 	ColorAddRemove = 'state_color_add_remove',
-	OnAir = 'onAir',
-	MessageVisible = 'messageVisible',
-	TimerBlink = 'timerBlink',
-	TimerBlackout = 'timerBlackout',
-	TimerPhase = 'timerPhase',
-
-	RundownOffset = 'rundownOffset',
-
-	AuxTimerPlayback = 'auxTimerPlayback',
-	AuxTimerNegative = 'auxTimerNegativePlayback',
 }
 
 export enum variableId {
-	PlayState = 'playState',
-
-	Clock = 'clock',
-
-	TimerStart = 'timer_start',
-	TimerFinish = 'timer_finish',
-	TimerAdded = 'timer_added',
-	TimerAddedNice = 'timer_added_nice',
-	TimerTotalMs = 'timer_total_ms',
-	TimerPhase = 'timer_phase',
-	Time = 'time',
-	TimeHM = 'time_hm',
-	TimeH = 'time_h',
-	TimeM = 'time_m',
-	TimeS = 'time_s',
-	TimeN = 'time_sign',
-
-	IdPrevious = 'idPrevious',
-	TitlePrevious = 'titlePrevious',
-	NotePrevious = 'notePrevious',
-	CuePrevious = 'cuePrevious',
-
-	IdNow = 'idNow',
-	TitleNow = 'titleNow',
-	NoteNow = 'noteNow',
-	CueNow = 'cueNow',
-
-	IdNext = 'idNext',
-	TitleNext = 'titleNext',
-	NoteNext = 'noteNext',
-	CueNext = 'cueNext',
-
-	TimerMessage = 'timerMessage',
-	TimerMessageVisible = 'timerMessageVisible',
-	TimerBlink = 'timerBlink',
-	TimerBlackout = 'timerBlackout',
-
-	AuxTimerDurationMs = 'auxTimer_duration_ms',
-	AuxTimerPlayback = 'auxTimer_playback',
-	AuxTimerCurrentMs = 'auxTimer_current_hms',
-	AuxTimerCurrent = 'auxTimer_current_hms',
-	AuxTimerPalyback = 'auxTimer_playback',
-	AuxTimerDirection = 'auxTimer_direction',
-
-	NumberOfEvents = 'numEvents',
-	SelectedEventIndex = 'selectedEventIndex',
-	RundownOffset = 'rundown_offset_hms',
-	PlannedStart = 'plannedStart_hms',
-	ActualStart = 'actualStart_hms',
-	PlannedEnd = 'plannedEnd_hms',
-	ExpectedEnd = 'expectedEnd_hms',
+	Connected = 'connected',
 }

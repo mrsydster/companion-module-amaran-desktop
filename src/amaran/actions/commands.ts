@@ -1,12 +1,7 @@
 export enum ActionCommand {
-	Start = 'start',
-	Load = 'load',
-	Reload = 'reload',
+	Toggle = 'toggle_sleep',
+
 	Pause = 'pause',
 	Stop = 'stop',
 	Roll = 'roll',
-	Add = 'addtime',
-	Message = 'message',
-	Change = 'change',
-	AuxTimer = 'auxtimer',
 }

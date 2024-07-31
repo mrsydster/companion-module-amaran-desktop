@@ -9,8 +9,9 @@ import {
 	CompanionFeedbackDefinitions,
 } from '@companion-module/base'
 
-import { AmaranConfig, GetConfigFields } from './config'
+import { AmaranConfig, GetConfigFields } from "./config"
 import { Amaran } from './amaran/amaran'
+
 import { UpgradeScripts } from './upgrades'
 
 export interface AmaranClient {
@@ -40,7 +41,7 @@ export class AmaranInstance extends InstanceBase<AmaranConfig> {
 		this.updateStatus(InstanceStatus.Disconnected)
 
 		this.amaran = new Amaran(this)
-		this.updateStatus(InstanceStatus.Connecting, 'starting V3')
+		this.updateStatus(InstanceStatus.Connecting, 'starting amaran Desktop')
 
 		this.initConnection()
 		this.init_variables()
