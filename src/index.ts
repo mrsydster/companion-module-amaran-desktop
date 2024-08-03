@@ -10,7 +10,7 @@ import {
 } from '@companion-module/base'
 
 import { AmaranConfig, GetConfigFields } from "./config"
-import { Amaran } from './amaran/amaran'
+import { Amaran } from './amaran'
 
 import { UpgradeScripts } from './upgrades'
 
@@ -44,11 +44,13 @@ export class AmaranInstance extends InstanceBase<AmaranConfig> {
 		this.updateStatus(InstanceStatus.Connecting, 'starting amaran Desktop')
 
 		this.initConnection()
-		this.init_variables()
-		this.init_actions()
-		this.init_feedbacks()
-		this.init_presets()
+		this.updateVariables()
+		this.updateActions()
+		this.updateFeedbacks()
+		this.updatePresets()
 		this.checkFeedbacks()
+
+		this.initConnection()
 	}
 
 	async destroy(): Promise<void> {
@@ -66,12 +68,13 @@ export class AmaranInstance extends InstanceBase<AmaranConfig> {
 		this.amaran.disconnectSocket()
 		this.updateStatus(InstanceStatus.Disconnected)
 
-		this.initConnection()
-		this.init_variables()
-		this.init_actions()
-		this.init_feedbacks()
-		this.init_presets()
+		this.updateVariables()
+		this.updateActions()
+		this.updateFeedbacks()
+		this.updatePresets()
 		this.checkFeedbacks()
+
+		this.initConnection()
 	}
 
 	initConnection(): void {
@@ -79,22 +82,22 @@ export class AmaranInstance extends InstanceBase<AmaranConfig> {
 		this.amaran.connect()
 	}
 
-	init_variables(): void {
+	updateVariables(): void {
 		this.log('debug', 'Initializing variables')
 		this.setVariableDefinitions(this.amaran.getVariables())
 	}
 
-	init_actions(): void {
+	updateActions(): void {
 		this.log('debug', 'Initializing actions')
 		this.setActionDefinitions(this.amaran.getActions())
 	}
 
-	init_feedbacks(): void {
+	updateFeedbacks(): void {
 		this.log('debug', 'Initializing feedbacks')
 		this.setFeedbackDefinitions(this.amaran.getFeedbacks(this))
 	}
 
-	init_presets(): void {
+	updatePresets(): void {
 		this.log('debug', 'Initializing presets')
 		this.setPresetDefinitions(this.amaran.getPresets())
 	}

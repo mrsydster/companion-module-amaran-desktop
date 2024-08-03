@@ -1,3 +1,31 @@
+// [{"id":"00000000-0000-0000-0000-000000000000","name":"ALL","node_id":"00000000-0000-0000-0000-000000000000"},{"id":"400H5-F14198","name":"FILL ONDER","node_id":"400H5-F14198"},{"id":"400G5-DEE481","name":"LIGGEND LINKS","node_id":"400G5-DEE481"},{"id":"400G5-DC38AD","name":"LIGGEND RECHTS","node_id":"400G5-DC38AD"},{"id":"cc85fac2-4b6d-11ef-9013-f2ff1fe5be13","name":"PRACTICALS","node_id":"cc85fac2-4b6d-11ef-9013-f2ff1fe5be13"},{"id":"400I5-DC5451","name":"STAAND LINKS","node_id":"400I5-DC5451"},{"id":"400I5-DBF9AE","name":"STAAND RECHTS","node_id":"400I5-DBF9AE"}]
+export type Device = {
+	id: string
+	name: string
+	node_id: string
+}
+
+// [{"id":"8d71467a-4f5a-11ef-b353-f2ff1fe5be13","name":"KEUKEN","fixtures":[{"id":"400H5-F14198","name":"FILL ONDER","node_id":"400H5-F14198"}],"groups":[{"id":"8d7534ce-4f5a-11ef-b353-f2ff1fe5be13","name":"ALL","node_id":"8d7534ce-4f5a-11ef-b353-f2ff1fe5be13"}]}]
+export type Scene = {
+	id: string
+	name: string
+	fixtures: Device[]
+	groups: Device[]
+}
+
+export type SystemEffectType = {
+	effect: string
+	name: string
+}
+
+export type Stateobj = {
+	quickshots: any[]
+	devices: any[]
+	presets: object
+	scenes: any[]
+	systemEffects: SystemEffectType[]
+}
+
 //Playbeck
 export enum Playback {
 	Roll = 'roll',

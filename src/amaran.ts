@@ -5,15 +5,15 @@ import {
 	CompanionVariableDefinition,
 } from '@companion-module/base'
 
-import { AmaranInstance, AmaranClient } from '../index'
+import { AmaranInstance, AmaranClient } from './index'
 
 import { connect, disconnectSocket } from './connection'
 import { CustomFields, AmaranEvent } from './amaran-types'
 
 import { stateobj } from './state'
 
-import { actions } from './actions/index'
-import { feedbacks } from './feedbacks/index'
+import { actions } from './actions'
+import { feedbacks } from './feedbacks'
 import { variables } from './variables'
 import { presets } from './presets'
 
