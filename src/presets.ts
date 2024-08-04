@@ -1041,8 +1041,8 @@ export function presets(amaran: Amaran): CompanionPresetDefinitions {
 		},
 		[ActionCommand.Quickshot]: {
 			type: 'button',
-			category: 'Quickshot',
-			name: 'Recall a quickshot',
+			category: 'Shortcut',
+			name: 'Recall a Shortcut',
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Playing,
@@ -1076,7 +1076,13 @@ export function presets(amaran: Amaran): CompanionPresetDefinitions {
 						{
 							actionId: ActionId.Preset,
 							options: {
-								type: 'cct',
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								preset_type: 'cct',
+								preset_cct: amaran.state.presets.cct[0]?.id || 'NO CCT PRESETS FOUND',
+								preset_color: amaran.state.presets.color[0]?.id || 'NO COLOR PRESETS FOUND',
+								preset_effect: amaran.state.presets.effect[0]?.id || 'NO EFFECT PRESETS FOUND',
 							},
 						},
 					],

@@ -11,9 +11,12 @@ import { Amaran } from './amaran'
 // import { SystemEffectType } from './amaran-types'
 
 let ws: Websocket | null = null
+
 let reconnectionTimeout: NodeJS.Timeout | null = null
 let reconnectInterval: number
 let shouldReconnect = false
+
+const clientId = 'a1b449058058a3b3f6f977443dc00f87'
 
 export function connect(self: AmaranInstance, amaran: Amaran): void {
 	reconnectInterval = self.config.reconnectInterval * 1000
@@ -39,7 +42,11 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		host.replace(pattern, '')
 	}
 
-	ws = new Websocket(`ws://${host}:${port}/ws`)
+	ws = new Websocket(`ws://${host}:${port}/ws`, {
+		headers: {
+			'Client-ID': clientId,
+		},
+	})
 
 	ws.onopen = (): void => {
 		clearTimeout(reconnectionTimeout as NodeJS.Timeout)
@@ -81,6 +88,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		amaran.state.quickshots = quickshots
 
 		self.updateActions()
+		self.updatePresets()
 		self.log('info', `Quickshot list updated with ${JSON.stringify(quickshots)}`)
 	}
 
@@ -88,6 +96,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		amaran.state.devices = devices
 
 		self.updateActions()
+		self.updatePresets()
 		self.log('info', `Device list updated with ${JSON.stringify(devices)}`)
 	}
 
@@ -95,6 +104,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		amaran.state.presets = presets
 
 		self.updateActions()
+		self.updatePresets()
 		self.log('info', `Preset list updated with ${JSON.stringify(presets)}`)
 	}
 
@@ -102,6 +112,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		amaran.state.scenes = scenes
 
 		self.updateActions()
+		self.updatePresets()
 		self.log('info', `Scene list updated with ${JSON.stringify(scenes)}`)
 	}
 
@@ -150,6 +161,8 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 			}
 		} catch (e) {
 			// self.log('warn', `Error parsing message: ${e}`)
+
+			self.log('warn', `STATE: ${JSON.stringify(amaran.state)}`)
 		}
 	}
 }
@@ -167,6 +180,7 @@ export function socketSendJson(type: string, node_id?: string | null, args: obje
 		ws.send(
 			JSON.stringify({
 				version: 0,
+				client_id: clientId,
 				type: type,
 				...(node_id && { node_id }),
 				...(args && { args }),

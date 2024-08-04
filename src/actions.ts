@@ -26,7 +26,7 @@ const getSceneChoices = (scenes: SceneType[]) => {
 	return scenes
 		.sort((a: SceneType, b: SceneType) => a.name.localeCompare(b.name))
 		.map(({ name, groups }: SceneType): DropdownChoice => {
-			return { id: groups[0].node_id, label: name }
+			return { id: groups[0]?.node_id, label: name }
 		})
 }
 
@@ -411,9 +411,34 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 		// Preset action [NOTE THIS IS NOT IMPLEMENTED CORRECTLY ON AMARAN SIDE]
 		[ActionId.Preset]: {
 			name: 'Recall Preset',
-			description:
-				'Recall a Preset (CCT, Color or Effect). [NOTE] Not implemented correctly on Amaran side. This is will only work if you have the light selected in the desktop app.',
+			description: 'Recall a Preset (CCT, Color or Effect).',
 			options: [
+				{
+					type: 'dropdown',
+					choices: [
+						{ id: 'device', label: 'Device' },
+						{ id: 'scene', label: 'Scene' },
+					],
+					default: 'device',
+					id: 'type',
+					label: 'Type',
+				},
+				{
+					type: 'dropdown',
+					choices: getSceneChoices(amaran.state.scenes),
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+					id: 'scene',
+					label: 'Scene',
+					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
+				},
+				{
+					type: 'dropdown',
+					choices: getDeviceChoices(amaran.state.devices),
+					default: '00000000-0000-0000-0000-000000000000',
+					id: 'device',
+					label: 'Device',
+					isVisible: (options: CompanionOptionValues): boolean => options.type === 'device',
+				},
 				{
 					type: 'dropdown',
 					choices: [
@@ -422,7 +447,7 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 						{ id: 'effect', label: 'Effect' },
 					],
 					default: 'cct',
-					id: 'type',
+					id: 'preset_type',
 					label: 'Preset Type',
 				},
 				{
@@ -431,7 +456,7 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: amaran.state.presets.cct[0]?.id || 'NO PRESETS FOUND',
 					id: 'preset_cct',
 					label: 'Preset',
-					isVisible: (options: CompanionOptionValues): boolean => options.type === 'cct',
+					isVisible: (options: CompanionOptionValues): boolean => options.preset_type === 'cct',
 				},
 				{
 					type: 'dropdown',
@@ -439,7 +464,7 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: amaran.state.presets.color[0]?.id || 'NO PRESETS FOUND',
 					id: 'preset_color',
 					label: 'Preset',
-					isVisible: (options: CompanionOptionValues): boolean => options.type === 'color',
+					isVisible: (options: CompanionOptionValues): boolean => options.preset_type === 'color',
 				},
 				{
 					type: 'dropdown',
@@ -447,27 +472,31 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: amaran.state.presets.effect[0]?.id || 'NO PRESETS FOUND',
 					id: 'preset_effect',
 					label: 'Preset',
-					isVisible: (options: CompanionOptionValues): boolean => options.type === 'effect',
+					isVisible: (options: CompanionOptionValues): boolean => options.preset_type === 'effect',
 				},
 			],
 			callback: (action: CompanionActionEvent): void => {
-				const presetType: string = action.options.type as string
+				const presetType: string = action.options.preset_type as string
 				const presetId: string = action.options[`preset_${presetType}`] as string
 
-				socketSendJson(ActionCommand.Preset, null, { preset_id: presetId })
+				socketSendJson(
+					ActionCommand.Preset,
+					action.options.type === 'device' ? (action.options.device as string) : (action.options.scene as string),
+					{ preset_id: presetId }
+				)
 			},
 		},
 		// Quickshot action
 		[ActionId.Quickshot]: {
-			name: 'Recall Quickshot',
-			description: 'Recall a Quickshot. [NOTE] Not implemented correctly on Amaran side.',
+			name: 'Recall Shortcut',
+			description: 'Recall a Shortcut.',
 			options: [
 				{
 					type: 'dropdown',
 					choices: [...amaran.state.quickshots.map(({ id, name }) => ({ id, label: name }))],
 					default: amaran.state.quickshots[0]?.id || 'NO QUICKSHOTS FOUND',
 					id: 'quickshot',
-					label: 'Quickshot',
+					label: 'Shortcut',
 				},
 			],
 			callback: (action: CompanionActionEvent): void => {
