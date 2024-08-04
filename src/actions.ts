@@ -172,15 +172,15 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: 5600,
 				},
 				// Not used yet
-				{
-					type: 'number',
-					label: 'G/M (-1 Full Green, 0 No Green/Magenta, 1 Full Magenta)',
-					id: 'gm',
-					min: -1,
-					max: 1,
-					default: 0,
-					step: 0.1,
-				},
+				// {
+				// 	type: 'number',
+				// 	label: 'G/M (-1 Full Green, 0 No Green/Magenta, 1 Full Magenta)',
+				// 	id: 'gm',
+				// 	min: -1,
+				// 	max: 1,
+				// 	default: 0,
+				// 	step: 0.1,
+				// },
 				{
 					type: 'checkbox',
 					label: 'Use Intensity',
