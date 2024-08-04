@@ -1,8 +1,8 @@
 {
-	"id": "amaran",
-	"name": "amaran",
+	"id": "amaran-desktop",
+	"name": "amaran-desktop",
 	"shortname": "amaran",
-	"description": "Companion module for Amaran lights",
+	"description": "Companion module for amaran Desktop",
 	"version": "1.0.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-amaran.git",
@@ -21,6 +21,6 @@
 		"entrypoint": "../dist/index.js"
 	},
 	"manufacturer": "Amaran",
-	"products": ["Amaran"],
-	"keywords": ["amaran", "aputure", "companion"]
+	"products": ["Desktop"],
+	"keywords": ["amaran", "desktop", "aputure", "lighting"]
 }

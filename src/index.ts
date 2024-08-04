@@ -9,7 +9,7 @@ import {
 	CompanionFeedbackDefinitions,
 } from '@companion-module/base'
 
-import { AmaranConfig, GetConfigFields } from "./config"
+import { AmaranConfig, GetConfigFields } from './config'
 import { Amaran } from './amaran'
 
 import { UpgradeScripts } from './upgrades'

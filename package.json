@@ -1,12 +1,12 @@
 {
-	"name": "amaran",
+	"name": "amaran-desktop",
 	"version": "1.0.0",
 	"main": "/dist/index.js",
 	"license": "MIT",
 	"prettier": "@companion-module/tools/.prettierrc.json",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bitfocus/companion-module-amaran.git"
+		"url": "git+https://github.com/bitfocus/companion-module-amaran-desktop.git"
 	},
 	"scripts": {
 		"prepare": "husky install",

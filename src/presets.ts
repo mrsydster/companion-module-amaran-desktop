@@ -6,6 +6,7 @@ import { ActionId, ActionCommand, CctId } from './enums'
 
 const White = combineRgb(255, 255, 255)
 const Black = combineRgb(0, 0, 0)
+const DarkGray = combineRgb(70, 70, 70)
 
 // CCT Colors
 const HighPressureWhite = combineRgb(254, 205, 85)
@@ -97,6 +98,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -127,6 +129,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -157,6 +160,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -187,6 +191,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -217,6 +222,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -247,6 +253,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -277,6 +284,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -307,6 +315,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -337,6 +346,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -367,6 +377,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -397,6 +408,7 @@ export function presets(): CompanionPresetDefinitions {
 				size: 18,
 				alignment: 'center:bottom',
 				pngalignment: 'center:top',
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1343,6 +1355,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Candle,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1371,6 +1384,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.ClubLights,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1399,6 +1413,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.ColorChase,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1427,6 +1442,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.CopCar,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1455,6 +1471,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Explosion,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1483,6 +1500,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.FaultBulb,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1511,6 +1529,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Fire,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1539,6 +1558,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Fireworks,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1567,6 +1587,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Lightning,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1595,6 +1616,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Paparazzi,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1623,6 +1645,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.PartyLights,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1651,6 +1674,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Pulsing,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1679,6 +1703,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Strobe,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1707,6 +1732,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.TV,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{
@@ -1735,6 +1761,7 @@ export function presets(): CompanionPresetDefinitions {
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Welding,
+				bgcolor: DarkGray,
 			},
 			steps: [
 				{

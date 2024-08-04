@@ -7,3 +7,7 @@ package-lock.json
 /pkg
 /pkg.tgz
 DEBUG-PACKAGED
+
+#Debugging for development
+fakeClient.js
+fakeWebserver.js

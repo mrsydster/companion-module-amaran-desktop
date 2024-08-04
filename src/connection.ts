@@ -8,6 +8,7 @@ import { feedbackId, variableId } from './enums'
 // import { MessageState } from './amaran-types'
 
 import { Amaran } from './amaran'
+// import { SystemEffectType } from './amaran-types'
 
 let ws: Websocket | null = null
 let reconnectionTimeout: NodeJS.Timeout | null = null
@@ -18,8 +19,8 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 	reconnectInterval = self.config.reconnectInterval * 1000
 	shouldReconnect = self.config.reconnect
 
-	const host = self.config.host
-	const port = self.config.port
+	const host: string = self.config.host
+	const port: string = self.config.port
 
 	if (!host || !port) {
 		self.updateStatus(InstanceStatus.BadConfig, `no host and/or port defined`)
@@ -40,7 +41,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 
 	ws = new Websocket(`ws://${host}:${port}/ws`)
 
-	ws.onopen = () => {
+	ws.onopen = (): void => {
 		clearTimeout(reconnectionTimeout as NodeJS.Timeout)
 		self.updateStatus(InstanceStatus.Ok, 'Connected to amaran Desktop')
 		self.log('info', 'Connected to amaran Desktop')
@@ -49,7 +50,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		socketSendJson('get_device_list')
 		socketSendJson('get_preset_list')
 		socketSendJson('get_scene_list')
-		// socketSendJson('get_system_effect_list') needs a node_id
+		// socketSendJson('get_system_effect_list', '00000000-0000-0000-0000-000000000000')
 
 		self.setVariableValues({ [variableId.Connected]: true })
 		self.checkFeedbacks(feedbackId.Connected)
@@ -80,41 +81,39 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		amaran.state.quickshots = quickshots
 
 		self.updateActions()
-		self.log('debug', `Quickshot list updated with ${JSON.stringify(quickshots)}`)
+		self.log('info', `Quickshot list updated with ${JSON.stringify(quickshots)}`)
 	}
 
 	const updateDeviceList = (devices: any): void => {
 		amaran.state.devices = devices
 
 		self.updateActions()
-		self.log('debug', `Device list updated with ${JSON.stringify(devices)}`)
+		self.log('info', `Device list updated with ${JSON.stringify(devices)}`)
 	}
 
 	const updatePresetList = (presets: any): void => {
 		amaran.state.presets = presets
 
 		self.updateActions()
-		self.log('debug', `Preset list updated with ${JSON.stringify(presets)}`)
+		self.log('info', `Preset list updated with ${JSON.stringify(presets)}`)
 	}
 
 	const updateSceneList = (scenes: any): void => {
 		amaran.state.scenes = scenes
 
 		self.updateActions()
-		self.log('debug', `Scene list updated with ${JSON.stringify(scenes)}`)
+		self.log('info', `Scene list updated with ${JSON.stringify(scenes)}`)
 	}
 
-	const updateSystemEffectsList = (systemEffects: any): void => {
-		amaran.state.scenes = systemEffects
-
-		self.updateActions()
-		self.log('debug', `System Effects list updated with ${JSON.stringify(systemEffects)}`)
-	}
+	// NOT PROPERLY IMPLEMENTED YET ON AMARAN SIDE
+	// const updateSystemEffectsList = (systemEffects: any): void => {
+	// 	amaran.state.systemEffects = systemEffects
+	//
+	// 	self.updateActions()
+	// 	self.log('info', `System Effects list updated with ${JSON.stringify(systemEffects)}`)
+	// }
 
 	ws.onmessage = (event: any): void => {
-		// log the whole message readable
-		self.log('info', `HIER: ${event.data}`)
-
 		try {
 			const { data } = JSON.parse(event.data)
 
@@ -138,17 +137,17 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 					updateSceneList(data.data)
 					break
 				}
-				case 'get_system_effect_list': {
-					updateSystemEffectsList(data.data)
-					break
-				}
+				// NOT PROPERLY IMPLEMENTED YET ON AMARAN SIDE
+				// case 'get_system_effect_list': {
+				// 	updateSystemEffectsList(data.data)
+				// 	break
+				// }
 				default: {
-					self.log('info', `${JSON.stringify(data)}`)
 					break
 				}
 			}
 		} catch (e) {
-			self.log('info', `Error parsing message: ${e}`)
+			// self.log('warn', `Error parsing message: ${e}`)
 		}
 	}
 }
@@ -161,7 +160,7 @@ export function disconnectSocket(): void {
 	ws?.close()
 }
 
-export function socketSendJson(type: string, node_id?: string, args: object = {}): void {
+export function socketSendJson(type: string, node_id?: string | null, args: object = {}): void {
 	if (ws && ws.readyState === ws.OPEN) {
 		ws.send(
 			JSON.stringify({

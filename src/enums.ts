@@ -1,4 +1,4 @@
-export enum ActionCommand {
+enum ActionCommand {
 	Power = 'toggle_sleep',
 	Intensity = 'set_intensity',
 	CCT = 'set_cct',
@@ -9,7 +9,7 @@ export enum ActionCommand {
 	Preset = 'set_preset',
 }
 
-export enum ActionId {
+enum ActionId {
 	Power = 'power',
 	Intensity = 'intensity',
 	CCT = 'cct',
@@ -20,7 +20,7 @@ export enum ActionId {
 	Preset = 'preset',
 }
 
-export enum CctId {
+enum CctId {
 	HighPressure = 'highpressure',
 	WarmWhite = 'warmwhite',
 	Tungsten = 'tungsten',
@@ -38,10 +38,12 @@ export enum CctId {
 	BlueSky = 'bluesky',
 }
 
-export enum feedbackId {
+enum feedbackId {
 	Connected = 'connected',
 }
 
-export enum variableId {
+enum variableId {
 	Connected = 'connected',
 }
+
+export { ActionCommand, ActionId, CctId, feedbackId, variableId }

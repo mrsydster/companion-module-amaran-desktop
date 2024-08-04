@@ -8,21 +8,20 @@ import {
 import { AmaranInstance, AmaranClient } from './index'
 
 import { connect, disconnectSocket } from './connection'
-import { CustomFields, AmaranEvent } from './amaran-types'
 
-import { stateobj } from './state'
+import { state } from './state'
 
 import { actions } from './actions'
 import { feedbacks } from './feedbacks'
 import { variables } from './variables'
 import { presets } from './presets'
 
+import { StateType } from './amaran-types'
+
 export class Amaran implements AmaranClient {
 	instance: AmaranInstance
 
-	public events: AmaranEvent[] = []
-	public customFields: CustomFields = {}
-	public state = stateobj
+	public state: StateType = state
 
 	constructor(instance: AmaranInstance) {
 		this.instance = instance

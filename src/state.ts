@@ -1,9 +1,13 @@
-import { Stateobj } from './amaran-types'
+import { StateType } from './amaran-types'
 
-const stateobj: Stateobj = {
+const state: StateType = {
 	quickshots: [],
 	devices: [],
-	presets: {},
+	presets: {
+		cct: [],
+		color: [],
+		effect: [],
+	},
 	scenes: [],
 	systemEffects: [
 		{ effect: 'candle', name: 'Candle Light' },
@@ -36,4 +40,4 @@ const stateobj: Stateobj = {
 	],
 }
 
-export { stateobj }
+export { state }

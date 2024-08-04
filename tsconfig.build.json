@@ -8,7 +8,7 @@
 		"paths": {
 			"*": ["./node_modules/*"]
 		},
-		"noImplicitAny": false,
+		"noImplicitAny": true,
 		"module": "commonjs",
 		"esModuleInterop": true
 	}
