@@ -114,6 +114,8 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 	// }
 
 	ws.onmessage = (event: any): void => {
+		self.log('info', `Received message: ${event.data}`)
+
 		try {
 			const { data } = JSON.parse(event.data)
 

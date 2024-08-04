@@ -9,9 +9,8 @@ import { Amaran } from './amaran'
 import { ActionId, ActionCommand } from './enums'
 import { DeviceType, SceneType, SystemEffectType } from './amaran-types'
 
-import { intToRgbWithIntensity } from './utilities'
-
 import { socketSendJson } from './connection'
+import { intToRgbWithIntensity } from './utilities'
 
 const getDeviceChoices = (devices: DeviceType[]) => {
 	// device names are sorted alphabetically
@@ -45,11 +44,11 @@ const getSystemEffectChoices = (systemEffects: SystemEffectType[]) => {
  */
 export function actions(amaran: Amaran): CompanionActionDefinitions {
 	return {
+		// Power action
 		[ActionId.Power]: {
 			name: 'Toggle On/Off',
 			description: 'Toggle the power state of a device or scene.',
 			options: [
-				// Scene or Device
 				{
 					type: 'dropdown',
 					choices: [
@@ -60,16 +59,14 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'type',
 					label: 'Type',
 				},
-				// What scene if type is scene
 				{
 					type: 'dropdown',
 					choices: getSceneChoices(amaran.state.scenes),
-					default: 0,
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 					id: 'scene',
 					label: 'Scene',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
 				},
-				// What device if type is device
 				{
 					type: 'dropdown',
 					choices: getDeviceChoices(amaran.state.devices),
@@ -86,11 +83,11 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 				)
 			},
 		},
+		// Intensity action
 		[ActionId.Intensity]: {
 			name: 'Set Intensity',
 			description: 'Set the intensity of a device or scene between 0 and 100%.',
 			options: [
-				// Scene or Device
 				{
 					type: 'dropdown',
 					choices: [
@@ -101,16 +98,14 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'type',
 					label: 'Type',
 				},
-				// What scene if type is scene
 				{
 					type: 'dropdown',
 					choices: getSceneChoices(amaran.state.scenes),
-					default: '',
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 					id: 'scene',
 					label: 'Scene',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
 				},
-				// What device if type is device
 				{
 					type: 'dropdown',
 					choices: getDeviceChoices(amaran.state.devices),
@@ -119,7 +114,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					label: 'Device',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'device',
 				},
-				// Intensity Slider
 				{
 					type: 'number',
 					label: 'Intensity (0-100%)',
@@ -138,11 +132,11 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 				)
 			},
 		},
+		// CCT action
 		[ActionId.CCT]: {
 			name: 'Set CCT',
 			description: 'Set the CCT value of a device or scene. Value must be between 2000 and 10000 Kelvin.',
 			options: [
-				// Scene or Device
 				{
 					type: 'dropdown',
 					choices: [
@@ -153,16 +147,14 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'type',
 					label: 'Type',
 				},
-				// What scene if type is scene
 				{
 					type: 'dropdown',
 					choices: getSceneChoices(amaran.state.scenes),
-					default: '',
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 					id: 'scene',
 					label: 'Scene',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
 				},
-				// What device if type is device
 				{
 					type: 'dropdown',
 					choices: getDeviceChoices(amaran.state.devices),
@@ -171,7 +163,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					label: 'Device',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'device',
 				},
-				// 	CCT Slider
 				{
 					type: 'number',
 					label: 'Kelvin',
@@ -179,16 +170,23 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					min: 2000,
 					max: 10000,
 					default: 5600,
-					required: true,
 				},
-				// Intensity checkbox
+				// Not used yet
+				// {
+				// 	type: 'number',
+				// 	label: 'G/M (-1 Full Green, 0 No Green/Magenta, 1 Full Magenta)',
+				// 	id: 'gm',
+				// 	min: -1,
+				// 	max: 1,
+				// 	default: 0,
+				// 	step: 0.1,
+				// },
 				{
 					type: 'checkbox',
 					label: 'Use Intensity',
 					id: 'useIntensity',
 					default: false,
 				},
-				// Intensity Slider
 				{
 					type: 'number',
 					label: 'Intensity (0-100%)',
@@ -214,7 +212,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 			name: 'Set RGB',
 			description: 'Set the color of a device or scene.',
 			options: [
-				// Scene or Device
 				{
 					type: 'dropdown',
 					choices: [
@@ -225,16 +222,14 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'type',
 					label: 'Type',
 				},
-				// What scene if type is scene
 				{
 					type: 'dropdown',
 					choices: getSceneChoices(amaran.state.scenes),
-					default: '',
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 					id: 'scene',
 					label: 'Scene',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
 				},
-				// What device if type is device
 				{
 					type: 'dropdown',
 					choices: getDeviceChoices(amaran.state.devices),
@@ -243,7 +238,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					label: 'Device',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'device',
 				},
-				// color
 				{
 					type: 'colorpicker',
 					label: 'Color',
@@ -251,14 +245,12 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: '16776960',
 					returnType: 'number',
 				},
-				// Intensity checkbox
 				{
 					type: 'checkbox',
 					label: 'Use Intensity',
 					id: 'useIntensity',
 					default: false,
 				},
-				// Intensity Slider
 				{
 					type: 'number',
 					label: 'Intensity (0-100%)',
@@ -281,11 +273,11 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 				)
 			},
 		},
+		// HSI action
 		[ActionId.HSI]: {
 			name: 'Set HSI',
 			description: 'Set the color of a device or scene.',
 			options: [
-				// Scene or Device
 				{
 					type: 'dropdown',
 					choices: [
@@ -296,16 +288,14 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'type',
 					label: 'Type',
 				},
-				// What scene if type is scene
 				{
 					type: 'dropdown',
 					choices: getSceneChoices(amaran.state.scenes),
-					default: '',
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 					id: 'scene',
 					label: 'Scene',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
 				},
-				// What device if type is device
 				{
 					type: 'dropdown',
 					choices: getDeviceChoices(amaran.state.devices),
@@ -314,7 +304,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					label: 'Device',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'device',
 				},
-				// Hue
 				{
 					type: 'number',
 					label: 'Hue (0-360)',
@@ -324,7 +313,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: 0,
 					required: true,
 				},
-				// Saturation
 				{
 					type: 'number',
 					label: 'Saturation (0-100)',
@@ -334,7 +322,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: 100,
 					required: true,
 				},
-				// Intensity Slider
 				{
 					type: 'number',
 					label: 'Intensity (0-100%)',
@@ -361,7 +348,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 			name: 'Set System Effect',
 			description: 'Set a System Effect to a device or scene.',
 			options: [
-				// Scene or Device
 				{
 					type: 'dropdown',
 					choices: [
@@ -372,16 +358,14 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'type',
 					label: 'Type',
 				},
-				// What scene if type is scene
 				{
 					type: 'dropdown',
 					choices: getSceneChoices(amaran.state.scenes),
-					default: '',
+					default: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 					id: 'scene',
 					label: 'Scene',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'scene',
 				},
-				// What device if type is device
 				{
 					type: 'dropdown',
 					choices: getDeviceChoices(amaran.state.devices),
@@ -390,7 +374,6 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					label: 'Device',
 					isVisible: (options: CompanionOptionValues): boolean => options.type === 'device',
 				},
-				// System effect
 				{
 					type: 'dropdown',
 					choices: getSystemEffectChoices(amaran.state.systemEffects),
@@ -398,14 +381,12 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					id: 'systemEffect',
 					label: 'System Effect',
 				},
-				// Intensity checkbox
 				{
 					type: 'checkbox',
 					label: 'Use Intensity',
 					id: 'useIntensity',
 					default: false,
 				},
-				// Intensity Slider
 				{
 					type: 'number',
 					label: 'Intensity (0-100%)',
@@ -425,6 +406,74 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					action.options.type === 'device' ? (action.options.device as string) : (action.options.scene as string),
 					{ effect_type: systemEffect, ...(intensity && { intensity }) }
 				)
+			},
+		},
+		// Preset action [NOTE THIS IS NOT IMPLEMENTED CORRECTLY ON AMARAN SIDE]
+		[ActionId.Preset]: {
+			name: 'Recall Preset',
+			description:
+				'Recall a Preset (CCT, Color or Effect). [NOTE] Not implemented correctly on Amaran side. This is will only work if you have the light selected in the desktop app.',
+			options: [
+				{
+					type: 'dropdown',
+					choices: [
+						{ id: 'cct', label: 'CCT' },
+						{ id: 'color', label: 'Color' },
+						{ id: 'effect', label: 'Effect' },
+					],
+					default: 'cct',
+					id: 'type',
+					label: 'Preset Type',
+				},
+				{
+					type: 'dropdown',
+					choices: [...amaran.state.presets.cct.map(({ id, name }) => ({ id, label: name }))],
+					default: amaran.state.presets.cct[0]?.id || 'NO PRESETS FOUND',
+					id: 'preset_cct',
+					label: 'Preset',
+					isVisible: (options: CompanionOptionValues): boolean => options.type === 'cct',
+				},
+				{
+					type: 'dropdown',
+					choices: [...amaran.state.presets.color.map(({ id, name }) => ({ id, label: name }))],
+					default: amaran.state.presets.color[0]?.id || 'NO PRESETS FOUND',
+					id: 'preset_color',
+					label: 'Preset',
+					isVisible: (options: CompanionOptionValues): boolean => options.type === 'color',
+				},
+				{
+					type: 'dropdown',
+					choices: [...amaran.state.presets.effect.map(({ id, name }) => ({ id, label: name }))],
+					default: amaran.state.presets.effect[0]?.id || 'NO PRESETS FOUND',
+					id: 'preset_effect',
+					label: 'Preset',
+					isVisible: (options: CompanionOptionValues): boolean => options.type === 'effect',
+				},
+			],
+			callback: (action: CompanionActionEvent): void => {
+				const presetType: string = action.options.type as string
+				const presetId: string = action.options[`preset_${presetType}`] as string
+
+				socketSendJson(ActionCommand.Preset, null, { preset_id: presetId })
+			},
+		},
+		// Quickshot action
+		[ActionId.Quickshot]: {
+			name: 'Recall Quickshot',
+			description: 'Recall a Quickshot. [NOTE] Not implemented correctly on Amaran side.',
+			options: [
+				{
+					type: 'dropdown',
+					choices: [...amaran.state.quickshots.map(({ id, name }) => ({ id, label: name }))],
+					default: amaran.state.quickshots[0]?.id || 'NO QUICKSHOTS FOUND',
+					id: 'quickshot',
+					label: 'Quickshot',
+				},
+			],
+			callback: (action: CompanionActionEvent): void => {
+				const quickshotId: string = action.options.quickshot as string
+
+				socketSendJson(ActionCommand.Quickshot, null, { quickshot_id: quickshotId })
 			},
 		},
 	}

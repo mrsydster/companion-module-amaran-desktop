@@ -11,3 +11,4 @@ DEBUG-PACKAGED
 #Debugging for development
 fakeClient.js
 fakeWebserver.js
+log.txt

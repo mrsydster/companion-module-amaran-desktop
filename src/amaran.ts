@@ -48,6 +48,6 @@ export class Amaran implements AmaranClient {
 	}
 
 	getPresets(): CompanionPresetDefinitions {
-		return presets()
+		return presets(this)
 	}
 }

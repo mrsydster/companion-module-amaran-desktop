@@ -2,6 +2,7 @@ import { CompanionButtonStyleProps, CompanionPresetDefinitions, combineRgb } fro
 
 import * as icons from './assets/icons'
 
+import { Amaran } from './amaran'
 import { ActionId, ActionCommand, CctId } from './enums'
 
 const White = combineRgb(255, 255, 255)
@@ -36,7 +37,7 @@ const defaultWithIconStyle: CompanionButtonStyleProps = {
 	show_topbar: false,
 }
 
-export function presets(): CompanionPresetDefinitions {
+export function presets(amaran: Amaran): CompanionPresetDefinitions {
 	return {
 		[ActionCommand.Power]: {
 			type: 'button',
@@ -54,6 +55,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 							},
 						},
 					],
@@ -78,6 +80,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 50,
 							},
 						},
@@ -108,6 +111,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 0,
 							},
 						},
@@ -139,6 +143,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 10,
 							},
 						},
@@ -170,6 +175,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 20,
 							},
 						},
@@ -201,6 +207,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 30,
 							},
 						},
@@ -232,6 +239,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 40,
 							},
 						},
@@ -263,6 +271,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 50,
 							},
 						},
@@ -294,6 +303,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 60,
 							},
 						},
@@ -325,6 +335,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 70,
 							},
 						},
@@ -356,6 +367,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 80,
 							},
 						},
@@ -387,6 +399,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 90,
 							},
 						},
@@ -418,6 +431,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								intensity: 100,
 							},
 						},
@@ -444,6 +458,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '16776960',
 								useIntensity: false,
 								intensity: 50,
@@ -455,17 +470,238 @@ export function presets(): CompanionPresetDefinitions {
 			],
 			feedbacks: [],
 		},
-		//Bonfire: 16738816
-		// Blue Sky: 3289855
-		// Moonlight Lake: 3307263
-		// Desert: 16749568
-		// Forest: 6750168
-		// Grassland: 9240422
-		// Ocean: 255
-		// Sunshine: 16737586
-		// Sakura: 16757426
-		// Aurora: 6750079
-		// Lavender: 8323327
+		// Red: 16720675
+		// Orange: 16737792
+		// Yellow: 16759552
+		// Green: 8650496
+		// Cyan: 5373913
+		// Blue: 37119
+		// Magenta: 6370815
+		[ActionCommand.RGB + '_Red']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Red',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(255, 35, 35),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '16720675',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionCommand.RGB + '_Orange']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Orange',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(255, 102, 0),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '16737792',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionCommand.RGB + '_Yellow']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Yellow',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(255, 187, 0),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '16759552',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionCommand.RGB + '_Green']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Green',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(131, 255, 0),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '8650496',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionCommand.RGB + '_Cyan']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Cyan',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(81, 255, 217),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '5373913',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionCommand.RGB + '_Blue']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Blue',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(0, 144, 255),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '37119',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionCommand.RGB + '_Magenta']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Magenta',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(97, 53, 255),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '6370815',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		[ActionId.RGB + '_Purple']: {
+			type: 'button',
+			category: 'Color',
+			name: 'Purple',
+			style: {
+				...defaultWithIconStyle,
+				bgcolor: combineRgb(207, 35, 255),
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: ActionId.RGB,
+							options: {
+								type: 'device',
+								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
+								color: '13575167',
+								useIntensity: false,
+								intensity: 50,
+							},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		},
+		// Color Scenes Presets
 		[ActionCommand.RGB + '_Bonfire']: {
 			type: 'button',
 			category: 'Color',
@@ -482,6 +718,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '16738816',
 								useIntensity: false,
 								intensity: 50,
@@ -509,6 +746,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '3289855',
 								useIntensity: false,
 								intensity: 50,
@@ -536,6 +774,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '3307263',
 								useIntensity: false,
 								intensity: 50,
@@ -563,6 +802,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '16749568',
 								useIntensity: false,
 								intensity: 50,
@@ -590,6 +830,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '6750168',
 								useIntensity: false,
 								intensity: 50,
@@ -617,6 +858,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '9240422',
 								useIntensity: false,
 								intensity: 50,
@@ -644,6 +886,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '255',
 								useIntensity: false,
 								intensity: 50,
@@ -671,6 +914,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '16737586',
 								useIntensity: false,
 								intensity: 50,
@@ -698,6 +942,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '16757426',
 								useIntensity: false,
 								intensity: 50,
@@ -725,6 +970,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '6750079',
 								useIntensity: false,
 								intensity: 50,
@@ -752,6 +998,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								color: '8323327',
 								useIntensity: false,
 								intensity: 50,
@@ -780,6 +1027,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'fire',
 								useIntensity: false,
 								intensity: 50,
@@ -794,7 +1042,7 @@ export function presets(): CompanionPresetDefinitions {
 		[ActionCommand.Quickshot]: {
 			type: 'button',
 			category: 'Quickshot',
-			name: 'recall a quickshot',
+			name: 'Recall a quickshot',
 			style: {
 				...defaultWithIconStyle,
 				png64: icons.Playing,
@@ -805,8 +1053,7 @@ export function presets(): CompanionPresetDefinitions {
 						{
 							actionId: ActionId.Quickshot,
 							options: {
-								type: 'device',
-								device: '00000000-0000-0000-0000-000000000000',
+								quickshot: amaran.state.quickshots[0]?.id || 'NO QUICKSHOTS FOUND',
 							},
 						},
 					],
@@ -829,8 +1076,7 @@ export function presets(): CompanionPresetDefinitions {
 						{
 							actionId: ActionId.Preset,
 							options: {
-								type: 'device',
-								device: '00000000-0000-0000-0000-000000000000',
+								type: 'cct',
 							},
 						},
 					],
@@ -855,6 +1101,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 5600,
 								useIntensity: false,
 								intensity: 50,
@@ -887,6 +1134,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 2200,
 								useIntensity: false,
 								intensity: 50,
@@ -919,6 +1167,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 2700,
 								useIntensity: false,
 								intensity: 50,
@@ -951,6 +1200,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 3200,
 								useIntensity: false,
 								intensity: 50,
@@ -983,6 +1233,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 3200,
 								useIntensity: false,
 								intensity: 50,
@@ -1015,6 +1266,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 3350,
 								useIntensity: false,
 								intensity: 50,
@@ -1047,6 +1299,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 4300,
 								useIntensity: false,
 								intensity: 50,
@@ -1079,6 +1332,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 5000,
 								useIntensity: false,
 								intensity: 50,
@@ -1111,6 +1365,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 5600,
 								useIntensity: false,
 								intensity: 50,
@@ -1143,6 +1398,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 5600,
 								useIntensity: false,
 								intensity: 50,
@@ -1175,6 +1431,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 6000,
 								useIntensity: false,
 								intensity: 50,
@@ -1207,6 +1464,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 6200,
 								useIntensity: false,
 								intensity: 50,
@@ -1239,6 +1497,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 6500,
 								useIntensity: false,
 								intensity: 50,
@@ -1271,6 +1530,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 7000,
 								useIntensity: false,
 								intensity: 50,
@@ -1303,6 +1563,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 8000,
 								useIntensity: false,
 								intensity: 50,
@@ -1335,6 +1596,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								cct: 10000,
 								useIntensity: false,
 								intensity: 50,
@@ -1346,7 +1608,6 @@ export function presets(): CompanionPresetDefinitions {
 			],
 			feedbacks: [],
 		},
-		// 	System effects: Candle, ClubLights, ColorChase, CopCar, Explosion, FaultBulb, Fire, Fireworks, Lightning, Paparazzi, PartyLights, Pulsing, Strobe, TV, Welding,
 		// System Effect: Candle
 		[ActionCommand.SystemEffect + '_Candle']: {
 			type: 'button',
@@ -1365,6 +1626,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'candle',
 								useIntensity: false,
 								intensity: 50,
@@ -1394,6 +1656,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'club_lights',
 								useIntensity: false,
 								intensity: 50,
@@ -1423,6 +1686,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'color_chase',
 								useIntensity: false,
 								intensity: 50,
@@ -1452,6 +1716,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'cop_car',
 								useIntensity: false,
 								intensity: 50,
@@ -1481,6 +1746,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'explosion',
 								useIntensity: false,
 								intensity: 50,
@@ -1510,6 +1776,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'fault_bulb',
 								useIntensity: false,
 								intensity: 50,
@@ -1539,6 +1806,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'fire',
 								useIntensity: false,
 								intensity: 50,
@@ -1568,6 +1836,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'fireworks',
 								useIntensity: false,
 								intensity: 50,
@@ -1597,6 +1866,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'lightning',
 								useIntensity: false,
 								intensity: 50,
@@ -1626,6 +1896,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'paparazzi',
 								useIntensity: false,
 								intensity: 50,
@@ -1655,6 +1926,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'party_lights',
 								useIntensity: false,
 								intensity: 50,
@@ -1684,6 +1956,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'pulsing',
 								useIntensity: false,
 								intensity: 50,
@@ -1713,6 +1986,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'strobe',
 								useIntensity: false,
 								intensity: 50,
@@ -1742,6 +2016,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'tv',
 								useIntensity: false,
 								intensity: 50,
@@ -1771,6 +2046,7 @@ export function presets(): CompanionPresetDefinitions {
 							options: {
 								type: 'device',
 								device: '00000000-0000-0000-0000-000000000000',
+								scene: amaran.state.scenes[0]?.groups[0]?.node_id || 'NO SCENES FOUND',
 								systemEffect: 'welding',
 								useIntensity: false,
 								intensity: 50,
