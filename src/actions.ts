@@ -10,7 +10,7 @@ import { ActionId, ActionCommand } from './enums'
 import { DeviceType, SceneType, SystemEffectType } from './amaran-types'
 
 import { socketSendJson } from './connection'
-import { intToRgbWithIntensity } from './utilities'
+import { intToRgbWithIntensity, transformGMValue } from './utilities'
 
 const getDeviceChoices = (devices: DeviceType[]) => {
 	// device names are sorted alphabetically
@@ -172,15 +172,15 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 					default: 5600,
 				},
 				// Not used yet
-				// {
-				// 	type: 'number',
-				// 	label: 'G/M (-1 Full Green, 0 No Green/Magenta, 1 Full Magenta)',
-				// 	id: 'gm',
-				// 	min: -1,
-				// 	max: 1,
-				// 	default: 0,
-				// 	step: 0.1,
-				// },
+				{
+					type: 'number',
+					label: 'G/M (-1 Full Green, 0 No Green/Magenta, 1 Full Magenta)',
+					id: 'gm',
+					min: -1,
+					max: 1,
+					default: 0,
+					step: 0.1,
+				},
 				{
 					type: 'checkbox',
 					label: 'Use Intensity',
@@ -203,7 +203,11 @@ export function actions(amaran: Amaran): CompanionActionDefinitions {
 				socketSendJson(
 					ActionCommand.CCT,
 					action.options.type === 'device' ? (action.options.device as string) : (action.options.scene as string),
-					{ cct: action.options.cct, ...(intensity && { intensity }) }
+					{
+						cct: action.options.cct,
+						gm: transformGMValue(action.options.gm as number),
+						...(intensity && { intensity }),
+					}
 				)
 			},
 		},

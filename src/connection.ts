@@ -15,10 +15,10 @@ let ws: Websocket | null = null
 let reconnectionTimeout: NodeJS.Timeout | null = null
 let reconnectInterval: number
 let shouldReconnect = false
-
-const clientId = 'a1b449058058a3b3f6f977443dc00f87'
+let clientId: string
 
 export function connect(self: AmaranInstance, amaran: Amaran): void {
+	clientId = `companion-${self.id}`
 	reconnectInterval = self.config.reconnectInterval * 1000
 	shouldReconnect = self.config.reconnect
 
@@ -125,7 +125,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 	// }
 
 	ws.onmessage = (event: any): void => {
-		self.log('info', `Received message: ${event.data}`)
+		self.log('debug', `Received amaran message: ${event.data}`)
 
 		try {
 			const { data } = JSON.parse(event.data)
@@ -161,8 +161,6 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 			}
 		} catch (e) {
 			// self.log('warn', `Error parsing message: ${e}`)
-
-			self.log('warn', `STATE: ${JSON.stringify(amaran.state)}`)
 		}
 	}
 }
