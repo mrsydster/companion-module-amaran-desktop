@@ -2,13 +2,10 @@ import { InstanceStatus } from '@companion-module/base'
 
 import Websocket from 'ws'
 
+import { Amaran } from './amaran'
 import { AmaranInstance } from './index'
 import { feedbackId, variableId } from './enums'
-
-// import { MessageState } from './amaran-types'
-
-import { Amaran } from './amaran'
-// import { SystemEffectType } from './amaran-types'
+import { DeviceType, PresetsType, QuickshotType, SceneType } from './amaran-types'
 
 let ws: Websocket | null = null
 
@@ -84,7 +81,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		self.updateStatus(InstanceStatus.ConnectionFailure, `WebSocket error: ${event.message}`)
 	}
 
-	const updateQuickshotList = (quickshots: any): void => {
+	const updateQuickshotList = (quickshots: QuickshotType[]): void => {
 		amaran.state.quickshots = quickshots
 
 		self.updateActions()
@@ -92,7 +89,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		self.log('info', `Quickshot list updated with ${JSON.stringify(quickshots)}`)
 	}
 
-	const updateDeviceList = (devices: any): void => {
+	const updateDeviceList = (devices: DeviceType[]): void => {
 		amaran.state.devices = devices
 
 		self.updateActions()
@@ -100,7 +97,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		self.log('info', `Device list updated with ${JSON.stringify(devices)}`)
 	}
 
-	const updatePresetList = (presets: any): void => {
+	const updatePresetList = (presets: PresetsType): void => {
 		amaran.state.presets = presets
 
 		self.updateActions()
@@ -108,7 +105,7 @@ export function connect(self: AmaranInstance, amaran: Amaran): void {
 		self.log('info', `Preset list updated with ${JSON.stringify(presets)}`)
 	}
 
-	const updateSceneList = (scenes: any): void => {
+	const updateSceneList = (scenes: SceneType[]): void => {
 		amaran.state.scenes = scenes
 
 		self.updateActions()

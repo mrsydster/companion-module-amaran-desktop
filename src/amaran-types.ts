@@ -42,4 +42,4 @@ type StateType = {
 	systemEffects: SystemEffectType[]
 }
 
-export { DeviceType, SceneType, SystemEffectType, StateType }
+export { DeviceType, SceneType, SystemEffectType, StateType, QuickshotType, PresetsType }
